@@ -17,6 +17,12 @@ If you haven't setup your AWS Credential profile yet, please follow the [instruc
     cd aws-otel-collector
 ```
 
+* [Optional] To configure `healthcheck` for `aws-otel-collector`, [run](https://github.com/aws-observability/aws-otel-collector/blob/main/docs/developers/docker-demo.md) the `aws-otel-collector` instance in Docker with these additional arguments:
+```bash
+    --health-cmd='/healthcheck' \
+    --health-interval=5s 
+```
+
 * Start the `aws-otel-collector` instance in Docker using the `default` AWS Credential profile.
 
 ```bash
@@ -62,7 +68,7 @@ Please make sure you have the right aws credential path (eg, `~/.aws:/root/.aws`
 ```
 2. Once you have the ```docker-compose.yaml``` file setup and saved, run the following make command.
 ```
-cd examples; docker-compose up 
+cd examples; docker-compose -f ./docker/docker-compose.yaml up 
 ```
 3. Now you can view you data in AWS console
 
